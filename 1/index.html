@@ -10,14 +10,12 @@
         </div>
         <script type='text/babel'>
             class Gugudan extends React.Component {
-                constructor(props) {
-                    super(props)
-                    this.state = {
-                        first: Math.ceil(Math.random() * 9),
-                        second: Math.ceil(Math.random() * 9),
-                        value: '',
-                        result: ''
-                    }
+                state = {
+                    first: Math.ceil(Math.random() * 9),
+                    second: Math.ceil(Math.random() * 9),
+                    value: '',
+                    prevValue: '',
+                    result: ''
                 }
 
                 onSubmit = (e) => {
@@ -26,11 +24,13 @@
                         this.setState({
                             first: Math.ceil(Math.random() * 9),
                             second: Math.ceil(Math.random() * 9),
+                            prevValue: this.state.value,
                             value: '',
                             result: '정답'
                         })
                     } else {
                         this.setState({
+                            prevValue: '',
                             value: '',
                             result: '땡'
                         })
@@ -45,7 +45,7 @@
         
                 render() {
                     return (
-                        <div>
+                        <React.Fragment>
                             <div>{this.state.first} 곱하기 {this.state.second}는?</div>
                             <form onSubmit={this.onSubmit}>
                                 <input
@@ -55,8 +55,8 @@
                                 />
                                 <button>입력!</button>
                             </form>
-                            <div>{this.state.result}</div>
-                        </div>
+                            <div>{this.state.prevValue ? this.state.prevValue + '는 ' : ''} {this.state.result}</div>
+                        </React.Fragment>
                     )
                 }
             }
