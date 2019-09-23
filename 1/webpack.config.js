@@ -1,16 +1,16 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
-    name: 'wordrelay-setting',
+    name: 'gugudan-setting',
     mode: 'development',
-    devtool: 'eval',    //  hidden-source-map
+    devtool: 'eval',
     resolve: {
         extensions: ['.js', '.jsx']
     },
-    
+
     entry: {
-        app: ['./client.jsx' ],
-    },  // 입력
+        app: ['./clients.jsx']
+    },
     module: {
         rules: [{
             test: /\.jsx?/,
@@ -23,7 +23,6 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: 'app.js',
-        
-    }   // 출력
+        filename: 'app.js'
+    }
 }
